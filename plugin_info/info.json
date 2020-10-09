@@ -1,16 +1,16 @@
 {
-	"id" : "fronius",
-	"name" : "Onduleur Fronius",
-	"description" : "Plugin pour récupérer les valeurs d'un onduleur Fronius",
+	"id" : "recycle",
+	"name" : "recycle",
+	"description" : "Plugin pour avoir les dates de ramassage des ordures",
 	"licence" : "AGPL",
-	"author" : "Sattaz",
+	"author" : "Poluket",
 	"require" : "3.2",
-	"category" : "monitoring",
+	"category" : "programmation",
 	"hasDependency" : false,
 	"hasOwnDeamon" : false,
 	"maxDependancyInstallTime" : 0,
-	"changelog" : "https://sattaz.github.io/Jeedom_Fronius/#language#/changelog",
-	"documentation" : "https://sattaz.github.io/Jeedom_Fronius/#language#/",
+	"changelog" : "https://poluket.github.io/recycle/#language#/changelog",
+	"documentation" : "https://poluket.github.io/recycle/#language#/",
 	"language" : "fr_FR",
 	"compatibility" : ""
 }

@@ -19,16 +19,16 @@
 /* * ***************************Includes********************************* */
 require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
-class fronius extends eqLogic {
+class recycle extends eqLogic {
     /*     * *************************Attributs****************************** */
 
     /*     * ***********************Methode static*************************** */
 
     //Fonction exécutée automatiquement toutes les minutes par Jeedom
     public static function cron() {
-		foreach (self::byType('fronius') as $fronius) {//parcours tous les équipements du plugin fronius
-			if ($fronius->getIsEnable() == 1) {//vérifie que l'équipement est actif
-				$cmd = $fronius->getCmd(null, 'refresh');//retourne la commande "refresh si elle existe
+		foreach (self::byType('recycle') as $recycle) {//parcours tous les équipements du plugin recycle
+			if ($recycle->getIsEnable() == 1) {//vérifie que l'équipement est actif
+				$cmd = $recycle->getCmd(null, 'refresh');//retourne la commande "refresh si elle existe
 				if (!is_object($cmd)) {//Si la commande n'existe pas
 					continue; //continue la boucle
 				}
@@ -71,7 +71,7 @@ class fronius extends eqLogic {
     public function postSave() {
 		$info = $this->getCmd(null, 'pv_power');
 		if (!is_object($info)) {
-			$info = new froniusCmd();
+			$info = new recycleCmd();
 			$info->setName(__('PV Production', __FILE__));
 		}
 		$info->setLogicalId('pv_power');
@@ -87,7 +87,7 @@ class fronius extends eqLogic {
 		
 		$info = $this->getCmd(null, 'pv_total');
 		if (!is_object($info)) {
-			$info = new froniusCmd();
+			$info = new recycleCmd();
 			$info->setName(__('PV Total', __FILE__));
 		}
 		$info->setLogicalId('pv_total');
@@ -101,7 +101,7 @@ class fronius extends eqLogic {
 		
 		$info = $this->getCmd(null, 'frequency');
 		if (!is_object($info)) {
-			$info = new froniusCmd();
+			$info = new recycleCmd();
 			$info->setName(__('Fréquence', __FILE__));
 		}
 		$info->setLogicalId('frequency');
@@ -117,7 +117,7 @@ class fronius extends eqLogic {
 		
 		$info = $this->getCmd(null, 'voltage_AC');
 		if (!is_object($info)) {
-			$info = new froniusCmd();
+			$info = new recycleCmd();
 			$info->setName(__('Volts AC', __FILE__));
 		}
 		$info->setLogicalId('voltage_AC');
@@ -133,7 +133,7 @@ class fronius extends eqLogic {
 		
 		$info = $this->getCmd(null, 'voltage_DC');
 		if (!is_object($info)) {
-			$info = new froniusCmd();
+			$info = new recycleCmd();
 			$info->setName(__('Volts DC', __FILE__));
 		}
 		$info->setLogicalId('voltage_DC');
@@ -149,7 +149,7 @@ class fronius extends eqLogic {
 		
 		$info = $this->getCmd(null, 'current_AC');
 		if (!is_object($info)) {
-			$info = new froniusCmd();
+			$info = new recycleCmd();
 			$info->setName(__('Amps AC', __FILE__));
 		}
 		$info->setLogicalId('current_AC');
@@ -165,7 +165,7 @@ class fronius extends eqLogic {
 		
 		$info = $this->getCmd(null, 'current_DC');
 		if (!is_object($info)) {
-			$info = new froniusCmd();
+			$info = new recycleCmd();
 			$info->setName(__('Amps DC', __FILE__));
 		}
 		$info->setLogicalId('current_DC');
@@ -181,7 +181,7 @@ class fronius extends eqLogic {
 		
 		$info = $this->getCmd(null, 'pv_day');
 		if (!is_object($info)) {
-			$info = new froniusCmd();
+			$info = new recycleCmd();
 			$info->setName(__('PV Jour', __FILE__));
 		}
 		$info->setLogicalId('pv_day');
@@ -195,7 +195,7 @@ class fronius extends eqLogic {
 		
 		$info = $this->getCmd(null, 'pv_year');
 		if (!is_object($info)) {
-			$info = new froniusCmd();
+			$info = new recycleCmd();
 			$info->setName(__('PV Année', __FILE__));
 		}
 		$info->setLogicalId('pv_year');
@@ -209,7 +209,7 @@ class fronius extends eqLogic {
 		
 		$info = $this->getCmd(null, 'VersionAPI');
 		if (!is_object($info)) {
-			$info = new froniusCmd();
+			$info = new recycleCmd();
 			$info->setName(__('Version API', __FILE__));
 		}
 		$info->setLogicalId('VersionAPI');
@@ -223,7 +223,7 @@ class fronius extends eqLogic {
 		
 		$info = $this->getCmd(null, 'status');
 		if (!is_object($info)) {
-			$info = new froniusCmd();
+			$info = new recycleCmd();
 			$info->setName(__('Statut', __FILE__));
 		}
 		$info->setLogicalId('status');
@@ -237,7 +237,7 @@ class fronius extends eqLogic {
 		
 		$refresh = $this->getCmd(null, 'refresh');
 		if (!is_object($refresh)) {
-			$refresh = new froniusCmd();
+			$refresh = new recycleCmd();
 			$refresh->setName(__('Rafraîchir', __FILE__));
 		}
 		$refresh->setEqLogic_id($this->getId());
@@ -267,7 +267,7 @@ class fronius extends eqLogic {
         
     }
 	
-	public function getFroniusData() {
+	public function getRecycleData() {
 		$Fronius_IP = $this->getConfiguration("IP");
 		$Fronius_Port = $this->getConfiguration("Port");
 		$VersionAPI = '';
@@ -404,7 +404,7 @@ class fronius extends eqLogic {
     /*     * **********************Getteur Setteur*************************** */
 }
 
-class froniusCmd extends cmd {
+class recycleCmd extends cmd {
     /*     * *************************Attributs****************************** */
 
 
@@ -424,7 +424,7 @@ class froniusCmd extends cmd {
 				$eqlogic = $this->getEqLogic();
 				switch ($this->getLogicalId()) {		
 					case 'refresh':
-						$info = $eqlogic->getFroniusData();
+						$info = $eqlogic->getRecycleData();
 						break;					
 		}
     }
