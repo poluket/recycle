@@ -30,13 +30,15 @@ foreach ($eqLogics as $eqLogic) {
       <div class="cursor eqLogicAction" data-action="add" style="text-align: center; background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
         <i class="fa fa-plus-circle" style="font-size : 6em;color:#FF0000;;"></i>
         <br>
-    <div class="cursor eqLogicAction logoPrimary" data-action="addByTemplate"> 
+    
+        <span style="font-size : 1.1em;position:relative;top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676">{{Ajouter}}</span>    </div>
+        <div class="cursor eqLogicAction logoPrimary" data-action="addByTemplate"> 
 				<i class="fas fa-plus"></i>
 				<br>
 				<span>{{Template}}</span>
-			</div>
-        <span style="font-size : 1.1em;position:relative;top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676">{{Ajouter}}</span>    </div>
-      <div class="cursor eqLogicAction" data-action="gotoPluginConf" style="text-align: center; background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;">
+        </div>
+            
+        <div class="cursor eqLogicAction" data-action="gotoPluginConf" style="text-align: center; background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;">
       <i class="fa fa-wrench" style="font-size : 6em;color:#767676;"></i>
     <br>
     <span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676">{{Configuration}}</span>
